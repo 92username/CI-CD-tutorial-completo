@@ -1,0 +1,67 @@
+name: CI/CD
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install deps
+        run: |
+          pip install -r requirements.txt \
+                      ruff pylint mypy bandit pip-audit black
+    
+        # --- Estilo / qualidade ---
+      - name: Ruff (PEP‑8 + imports)
+        run: ruff app
+
+      - name: Pylint
+        run: pylint app
+
+        # --- Tipagem ---
+      - name: mypy
+        run: mypy app
+
+        # --- Segurança ---
+      - name: Bandit
+        run: bandit -r app
+
+      - name: pip‑audit
+        run: pip-audit
+
+        # --- Formatação (fail on diff) ---
+      - name: Black check
+        run: black --check app
+
+      - name: Lint
+        run: ruff app
+
+      - name: Unit tests
+        run: pytest -q
+
+      - name: Build & Push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ci-cd-demo:${{ github.sha }}
+
+  deploy:
+    needs: build-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Deploy placeholder
+        run: echo "Deploy via SSH or ECS script aqui"
