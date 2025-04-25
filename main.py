@@ -7,6 +7,10 @@ app = FastAPI(title="DevOps CI/CD Demo API", version="0.1.0")
 
 REQUEST_COUNT = Counter("api_requests_total", "Total de requisições")
 REQUEST_LATENCY = Histogram("api_request_latency_seconds", "Latência das requisições")
+POST_COUNT = Counter("api_post_total", "Total de POSTs recebidos")
+
+class Payload(BaseModel):
+    nome: str
 
 @app.get("/")
 def root():
@@ -19,27 +23,13 @@ def event():
     REQUEST_LATENCY.observe(time.time() - start)
     return {"message": "evento gerado"}
 
+@app.post("/api/v1/send")
+def receive_event(payload: Payload):
+    POST_COUNT.inc()
+    return {"received": payload.nome}
+
+
 @app.get("/metrics")
 def metrics():
     return Response(generate_latest(), media_type=CONTENT_TYPE_LATEST)
 
-# tests/test_api.py
-from fastapi.testclient import TestClient
-from app.main import app
-
-client = TestClient(app)
-
-def test_root():
-    resp = client.get("/")
-    assert resp.status_code == 200
-    assert resp.json() == {"status": "ok"}
-
-def test_event():
-    resp = client.get("/api/v1/event")
-    assert resp.status_code == 200
-    assert resp.json() == {"message": "evento gerado"}
-
-def test_metrics():
-    resp = client.get("/metrics")
-    assert resp.status_code == 200
-    assert "api_requests_total" in resp.text
