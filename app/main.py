@@ -2,9 +2,10 @@
 
 import asyncio # Standard library imports first
 import time
+import os
 
 from fastapi import FastAPI, Response
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, FileResponse
 from prometheus_client import Counter, Histogram, generate_latest, CONTENT_TYPE_LATEST
 from pydantic import BaseModel, EmailStr
 
@@ -95,3 +96,15 @@ async def introduce_delay(segundos: int):
     await asyncio.sleep(segundos)  # Usar asyncio.sleep para não bloquear o event loop
     REQUEST_LATENCY.observe(time.time() - start)
     return {"message": f"Aguardei por {segundos} segundos."}
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+@app.get("/robots.txt")
+def robots_txt():
+    """Retorna o arquivo robots.txt."""
+    return FileResponse(os.path.join(BASE_DIR, "static", "robots.txt"), media_type="text/plain")
+
+@app.get("/sitemap.xml")
+def sitemap_xml():
+    """Retorna o arquivo sitemap.xml."""
+    return FileResponse(os.path.join(BASE_DIR, "static", "sitemap.xml"), media_type="application/xml")
