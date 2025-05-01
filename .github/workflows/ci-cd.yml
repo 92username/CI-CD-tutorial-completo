@@ -45,6 +45,8 @@ jobs:
 
       - name: Executar testes unitários
         run: pytest -q
+        env:
+          PYTHONPATH: ./app
 
   deploy:
     needs: build-test
