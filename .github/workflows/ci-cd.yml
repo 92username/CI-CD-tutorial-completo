@@ -26,19 +26,19 @@ jobs:
                       ruff pylint mypy bandit pip-audit black pytest
 
       - name: Verificação de formatação com Black
-        run: black --color app
+        run: black --color ./app
 
       - name: Lint com Ruff
-        run: ruff app
+        run: ruff ./app
 
       - name: Análise de código com Pylint
         run: pylint app
 
       - name: Verificação de tipagem com mypy
-        run: mypy app
+        run: mypy ./app
 
       - name: Análise de segurança com Bandit
-        run: bandit -r app
+        run: bandit -r ./app
 
       - name: Auditoria de dependências com pip-audit
         run: pip-audit
