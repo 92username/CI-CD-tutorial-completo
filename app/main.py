@@ -1,9 +1,12 @@
+"""Módulo principal da API FastAPI para demonstração de CI/CD."""
+
+import asyncio # Standard library imports first
+import time
+
 from fastapi import FastAPI, Response
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel, EmailStr
 from prometheus_client import Counter, Histogram, generate_latest, CONTENT_TYPE_LATEST
-import time
-import asyncio  # Import asyncio for the delay endpoint
+from pydantic import BaseModel, EmailStr
 
 app = FastAPI(title="DevOps CI/CD Demo API", version="0.1.0")
 
@@ -13,6 +16,7 @@ REQUEST_LATENCY = Histogram("api_request_latency_seconds", "Latência das requis
 
 # --- Modelos Pydantic ---
 class UserCreate(BaseModel):
+    """Modelo Pydantic para criação de usuário."""
     nome: str
     email: EmailStr
 
@@ -20,11 +24,13 @@ class UserCreate(BaseModel):
 # --- Endpoints Existentes ---
 @app.get("/")
 def root():
+    """Endpoint raiz que retorna um status 'ok'."""
     return {"status": "ok"}
 
 
 @app.get("/api/v1/event")
 def event():
+    """Endpoint que simula a geração de um evento e registra métricas."""
     start = time.time()
     REQUEST_COUNT.inc()
     # Simular algum trabalho antes de observar a latência
@@ -35,8 +41,11 @@ def event():
 
 @app.get("/metrics")
 def metrics():
+    """Endpoint que expõe as métricas do Prometheus."""
     return Response(generate_latest(), media_type=CONTENT_TYPE_LATEST)
 
+
+# --- Novos Endpoints ---
 
 @app.get("/api/v1/users")
 def get_users():
