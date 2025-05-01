@@ -72,3 +72,4 @@ jobs:
           target: 'http://${{ secrets.VM_IP }}:8000'
           fail_action: false
           token: ${{ secrets.ZAP_TOKEN }}
+          artifact_name: zap-scan-report
