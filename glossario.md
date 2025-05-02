@@ -4,7 +4,8 @@ Este glossário foi criado para facilitar a compreensão dos termos usados neste
 
 Caso você se depare com uma palavra desconhecida, consulte esta lista. A ideia é ajudar a reduzir a curva de aprendizado e permitir que você avance com mais confiança.
 
-    Dica: se ainda estiver aprendendo Git, Docker ou YAML, é recomendável buscar uma introdução paralela a esses temas enquanto explora o projeto.
+    Dica: se ainda estiver aprendendo Git, Docker ou YAML, é recomendável buscar
+    uma introdução paralela a esses temas enquanto explora o projeto.
 
 | Termo                                   | Significado                                                                                              |
 | --------------------------------------- | -------------------------------------------------------------------------------------------------------- |
