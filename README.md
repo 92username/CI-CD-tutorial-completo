@@ -1,10 +1,11 @@
 [![CI/CD - Build, Testes e Deploy](https://github.com/92username/CI-CD-tutorial-completo/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/92username/CI-CD-tutorial-completo/actions/workflows/ci-cd.yml) 
 
-[!Microsoft Azure(https://img.shields.io/badge/microsoft%20azure-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white)]
+![Microsoft Azure](https://img.shields.io/badge/microsoft%20azure-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white) ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi) ![Docker Compose](https://img.shields.io/badge/Docker%20Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white) 
+
+![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white) ![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white) ![Pytest](https://img.shields.io/badge/pytest-%23ffffff.svg?style=for-the-badge&logo=pytest&logoColor=2f9fe3) ![Github Actions](https://img.shields.io/badge/Github%20Actions-282a2e?style=for-the-badge&logo=githubactions&logoColor=367cfe)
 
 ##  🚧 Em construção 🚧
 
-readme_content = """\
 # CI/CD Tutorial Completo com FastAPI, Docker e GitHub Actions
 
 Este repositório é um **tutorial prático e completo** sobre como construir uma pipeline CI/CD moderna, com foco em boas práticas de desenvolvimento, segurança e automação DevOps.
@@ -42,7 +43,7 @@ Ao longo do projeto, você irá aprender como:
 
 ## 💡 Objetivo
 
-Este projeto serve como base de estudo e referência para estudantes, desenvolvedores iniciantes em DevOps e profissionais que desejam aplicar práticas modernas de integração contínua, entrega contínua e segurança automatizada em aplicações Python.
+Este projeto serve como base de estudo e referência para estudantes e desenvolvedores iniciantes em DevOps.
 
 ---
 
@@ -54,8 +55,6 @@ Confira mais detalhes no arquivo [`SECURITY.md`](./SECURITY.md).
 
 ## ✍️ Contribuindo
 
-Este repositório é mantido para fins educacionais, mas colaborações e sugestões são bem-vindas. 
-"""
+Este repositório é mantido para fins educacionais, mas colaborações e sugestões são bem-vindas.
 
-Path("/mnt/data/README - provisório.md").write_text(readme_content, encoding="utf-8")
 
