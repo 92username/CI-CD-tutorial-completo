@@ -1,6 +1,6 @@
 [![CI/CD - Build, Testes e Deploy](https://github.com/92username/CI-CD-tutorial-completo/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/92username/CI-CD-tutorial-completo/actions/workflows/ci-cd.yml) 
 
-[![Microsoft Azure](https://img.shields.io/badge/microsoft%20azure-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white)]
+[!Microsoft Azure(https://img.shields.io/badge/microsoft%20azure-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white)]
 
 ##  🚧 Em construção 🚧
 
