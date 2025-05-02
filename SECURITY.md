@@ -29,8 +29,13 @@ Durante o processo de CI, são executadas ferramentas de análise e verificaçã
 ## ✅ Boas Práticas
 
 - As imagens Docker são construídas com `python:3.12-slim`, minimizando superfícies de ataque.
-- A aplicação serve apenas as rotas necessárias (como `/metrics`, `/robots.txt`, `/sitemap.xml`).
-- As métricas expostas estão protegidas com `Content-Type: text/plain` e não incluem dados sensíveis.
+- A aplicação serve apenas as rotas necessárias, todas com propósito funcional ou educacional:
+  - `/` — Health check simples (status da API)
+  - `/metrics` — Exposição de métricas para Prometheus
+  - `/robots.txt` e `/sitemap.xml` — Suporte básico a scanners/bots
+  - `/api/v1/event` — Simulação de evento para coleta de métricas
+  - `/api/v1/users` — Endpoint com retorno de dados mockados (simulados), sem uso de banco de dados ou dados sensíveis
+- As métricas expostas estão protegidas com `Content-Type: text/plain` e não incluem dados pessoais.
 
 ## 📬 Reportar Vulnerabilidades
 
