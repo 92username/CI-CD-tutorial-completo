@@ -17,7 +17,8 @@ Ao longo do projeto, você irá aprender como:
 - Integrar ferramentas de segurança como **Bandit**, **pip-audit** e **OWASP ZAP**
 - Automatizar o deploy em uma VM com GitHub Actions
 
-Para facilitar sua curva de aprendizado, acesse o [Glossário](%20glossario.md)
+## 👉 Para facilitar sua curva de aprendizado, acesse o [Glossário](%20glossario.md)
+
 > **Status do projeto**: 🚧 Em desenvolvimento – Capítulo 4 concluído.
 
 ---
